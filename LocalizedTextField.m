@@ -26,9 +26,9 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import "C4MLocalizedTextField.h"
+#import "LocalizedTextField.h"
 
-@implementation C4MLocalizedTextField
+@implementation LocalizedTextField
 
 
 - (id)initWithCoder:(NSCoder *)aDecoder
@@ -58,8 +58,12 @@
 
 - (void) drawPlaceholderInRect:(CGRect)rect
 {
-    [[UIColor colorWithRed:1.0f green:1.0f blue:1.0f alpha:0.5f] setFill];
-    [[self placeholder] drawInRect:rect withFont:self.font];
+    [[UIColor colorWithRed:1.0f green:1.0f blue:1.0f alpha:0.5f] setFill];	
+	NSDictionary* lAttributes = [NSDictionary dictionaryWithObjectsAndKeys:self.font, NSFontAttributeName, nil];
+	
+	[[self placeholder] drawInRect:rect
+					withAttributes:lAttributes];
+	
 }
 
 @end

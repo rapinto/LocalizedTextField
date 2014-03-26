@@ -29,6 +29,6 @@
 
 #import <Foundation/Foundation.h>
 
-@interface C4MLocalizedTextField : UITextField
+@interface LocalizedTextField : UITextField
 
 @end
