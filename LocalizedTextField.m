@@ -36,15 +36,22 @@
 	self = [super initWithCoder:aDecoder];
 	if(self)
 	{
-		self.placeholder	= NSLocalizedString(self.placeholder, @"");
-        
+		if (self.placeholder)
+		{
+			self.placeholder = NSLocalizedString(self.placeholder, @"");
+		}
+		
+		if (self.text)
+		{
+			self.text = NSLocalizedString(self.text, @"");
+        }
+		
         UIImage *bgImage = [self background];
         if (bgImage != nil)
         {
             bgImage = [bgImage stretchableImageWithLeftCapWidth:(int)bgImage.size.width / 2.0 topCapHeight:(int)bgImage.size.height / 2.0];
             [self setBackground:bgImage];
 		}
-        
 	}
 	return self;
 }
@@ -53,17 +60,6 @@
 {
 	self.delegate = nil;
 	[super dealloc];
-}
-
-
-- (void) drawPlaceholderInRect:(CGRect)rect
-{
-    [[UIColor colorWithRed:1.0f green:1.0f blue:1.0f alpha:0.5f] setFill];	
-	NSDictionary* lAttributes = [NSDictionary dictionaryWithObjectsAndKeys:self.font, NSFontAttributeName, nil];
-	
-	[[self placeholder] drawInRect:rect
-					withAttributes:lAttributes];
-	
 }
 
 @end
